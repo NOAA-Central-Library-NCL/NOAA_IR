@@ -2,15 +2,16 @@
 
 *"This repository is a scientific product and is not official communication of the National Oceanic and Atmospheric Administration, or the United States Department of Commerce. All NOAA GitHub project code is provided on an 'as is' basis and the user assumes responsibility for its use. Any claims against the Department of Commerce or Department of Commerce bureaus stemming from the use of this GitHub project will be governed by all applicable Federal law. Any reference to specific commercial products, processes, or services by service mark, trademark, manufacturer, or otherwise, does not constitute or imply their endorsement, recommendation or favoring by the Department of Commerce. The Department of Commerce seal and logo, or the seal and logo of a DOC bureau, shall not be used in any manner to imply endorsement of any commercial product or activity by DOC or the United States Government."*
 
-# NOAA Institutional Repository APIs (JSON API and OAI-PMH)
+# NOAA Institutional Repository web services (JSON API and OAI-PMH)
 
 ## JSON API
 
-The NOAA Institutional Repository (NOAA IR) JSON API provides access to the NOAA IR's collections in JSON. 
+The NOAA Institutional Repository (NOAA IR) JSON API provides access to the NOAA IR's collections in JSON.
 
-Each collection in the NOAA IR API has its own endpoint, with a collection's unique identifier, or pid, serving as the endpoint. The NOAA IR collections and associated pids consist of: 
+Each collection in the NOAA IR API has its own endpoint, with a collection unique identifier, or pid, serving as the endpoint. The NOAA IR collections and associated pids consist of:
 
-```National Environmental Policy Act (NEPA) : 1
+```
+National Environmental Policy Act (NEPA) : 1
 Weather Research and Forecasting Innovation Act : 23702
 Coral Reef Conservation Program (CRCP) : 3
 Ocean Exploration Program (OER) : 4
@@ -31,11 +32,11 @@ Cooperative Science Centers: 24914
 
 **Notes**:
 * No API key or authenication is required.
-* If you query one or more collection and only are interested in the the unique item count, be sure to de-duplicate your results. Items in the NOAA IR are shared accross multiple collections, and this will be reflected in cases where multiple collections are combined into a single dataset.  
+* If you query one or more collection and only are interested in the the unique item count, de-duplicate your results. Items in the NOAA IR are shared accross multiple collections, and this will be reflected in cases when multiple collections are combined into a single dataset.  
 
 ### API Base URL
 
-The NOAA IR JSON API's base url is: 
+The NOAA IR JSON API's base url is:
 * https://repository.library.noaa.gov/fedora/export
 
 From the base URL you have the option to download or view JSON.
@@ -45,7 +46,7 @@ From the base URL you have the option to download or view JSON.
 * https://repository.library.noaa.gov/fedora/export/download/collection/{pid}
 
 
-By choosing this option you download all items in JSON from a collection, including directly from the browser. 
+By choosing this option you download all items in JSON from a collection, including directly from the browser.
 
 #### View URL
 
@@ -88,12 +89,12 @@ Once you retrieved the number of rows, you can pass them off as parameters and p
 ```
 >>> response = requests.get(url, params={'rows':rows})
 >>> response.url
-'''https://response.library.noaa.gov/fedora/export/view/collection/4?rows=718'
+'https://response.library.noaa.gov/fedora/export/view/collection/4?rows=718'
 >>> json_d = response.json()
 >>> docs = json_d['response']['docs']
 ```
 
-In parsing collection data be sure your code is written to handle blank fields. 
+In parsing collection data be sure your code is written to handle blank fields.
 
 ```
 >>> collection_data = []
@@ -113,11 +114,11 @@ In parsing collection data be sure your code is written to handle blank fields.
 >>>
 ```
 
-##### Example 2: Date Filter (Query String) 
+##### Example 2: Date Filter (Query String)
 
-The NOAA IR JSON API allows you to filter collections by using according to the date items were added to the IR using the query strings 'from' and 'until' 
+The NOAA IR JSON API allows you to filter collections according to the date items were added to the IR using the query strings 'from' and 'until'
 
-In using this feature, the date must be formatted as 'YYYY-MM-DDTHH:MM:SSZ'. Otherwise, the date filter will not apply all collection items will be pulled. 
+In using this feature, the date must be formatted as 'YYYY-MM-DDTHH:MM:SSZ'. Otherwise, the date filter will not apply all collection items will be pulled.
 
 ```
 >>> from datetime import datetime
@@ -128,7 +129,7 @@ In using this feature, the date must be formatted as 'YYYY-MM-DDTHH:MM:SSZ'. Oth
 >>> until_d = datetime.now().strftime('%Y-%m-%dT00:00:00Z')
 >>>
 >>> response = requests.get(url, params={'from': from, 'until': until_d})
->>> response.url 
+>>> response.url
 'https://repository.library.noaa.gov/fedora/export/download/collection/4?from=2020-06-01T00:00:00Z&until2020-07-15T00:00:00Z
 >>> json_d = response.json()
 >>> docs = response['response']['docs']   
@@ -162,10 +163,10 @@ When parsing the NOAA IR JSON API with pandas there are side effects to be aware
 
 ##### More examples
 
-More detailed examples can be found in this reposistory's ```noaa_json_api``` directory. 
+More detailed examples can be found in this reposistory's ```noaa_json_api``` directory.
 
-## OAI-PMH 
+## OAI-PMH
 
-The NOAA Institutional Respository also provides access to the the IR's collection through [OAI-PMH](http://www.openarchives.org/OAI/openarchivesprotocol.html). 
+The NOAA Institutional Respository also provides access to the the IR's collection through [OAI-PMH](http://www.openarchives.org/OAI/openarchivesprotocol.html).
 
 More information and examples for OAI-PMH are coming soon.
