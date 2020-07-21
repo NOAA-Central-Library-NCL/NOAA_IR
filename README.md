@@ -8,10 +8,9 @@
 
 The NOAA Institutional Repository (NOAA IR) JSON API provides access to the NOAA IR's collections in JSON. 
 
-Each collection in the NOAA IR API has its own endpoint, with a collection unique identifier, or pid, serving as the endpoint. The NOAA IR collections and associated pids consist of: 
+Each collection in the NOAA IR API has its own endpoint, with a collection's unique identifier, or pid, serving as the endpoint. The NOAA IR collections and associated pids consist of: 
 
-```
-National Environmental Policy Act (NEPA) : 1
+```National Environmental Policy Act (NEPA) : 1
 Weather Research and Forecasting Innovation Act : 23702
 Coral Reef Conservation Program (CRCP) : 3
 Ocean Exploration Program (OER) : 4
@@ -32,7 +31,7 @@ Cooperative Science Centers: 24914
 
 **Notes**:
 * No API key or authenication is required.
-* If you query one or more collection and only are interested in the the unique item count, de-duplicate your results. Items in the NOAA IR are shared accross multiple collections, and this will be reflected in cases when multiple collections are combined into a single dataset.  
+* If you query one or more collection and only are interested in the the unique item count, be sure to de-duplicate your results. Items in the NOAA IR are shared accross multiple collections, and this will be reflected in cases where multiple collections are combined into a single dataset.  
 
 ### API Base URL
 
@@ -89,7 +88,7 @@ Once you retrieved the number of rows, you can pass them off as parameters and p
 ```
 >>> response = requests.get(url, params={'rows':rows})
 >>> response.url
-'https://response.library.noaa.gov/fedora/export/view/collection/4?rows=718'
+'''https://response.library.noaa.gov/fedora/export/view/collection/4?rows=718'
 >>> json_d = response.json()
 >>> docs = json_d['response']['docs']
 ```
@@ -116,7 +115,7 @@ In parsing collection data be sure your code is written to handle blank fields.
 
 ##### Example 2: Date Filter (Query String) 
 
-The NOAA IR JSON API allows you to filter collections according to the date items were added to the IR using the query strings 'from' and 'until' 
+The NOAA IR JSON API allows you to filter collections by using according to the date items were added to the IR using the query strings 'from' and 'until' 
 
 In using this feature, the date must be formatted as 'YYYY-MM-DDTHH:MM:SSZ'. Otherwise, the date filter will not apply all collection items will be pulled. 
 
