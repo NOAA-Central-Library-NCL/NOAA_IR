@@ -2,16 +2,18 @@
 
 *"This repository is a scientific product and is not official communication of the National Oceanic and Atmospheric Administration, or the United States Department of Commerce. All NOAA GitHub project code is provided on an 'as is' basis and the user assumes responsibility for its use. Any claims against the Department of Commerce or Department of Commerce bureaus stemming from the use of this GitHub project will be governed by all applicable Federal law. Any reference to specific commercial products, processes, or services by service mark, trademark, manufacturer, or otherwise, does not constitute or imply their endorsement, recommendation or favoring by the Department of Commerce. The Department of Commerce seal and logo, or the seal and logo of a DOC bureau, shall not be used in any manner to imply endorsement of any commercial product or activity by DOC or the United States Government."*
 
-# NOAA Institutional Repository web services (JSON API and OAI-PMH)
+## NOAA Institutional Repository web services
 
-## JSON API
+The NOAA Institutional Repository provides two public web services for users.
 
-The NOAA Institutional Repository (NOAA IR) JSON API provides access to the NOAA IR's collections in JSON.
+### NOAA IR JSON API
 
-Each collection in the NOAA IR API has its own endpoint, with a collection's unique identifier, or pid, serving as the endpoint. The NOAA IR collections and associated pids consist of:
+The NOAA Institutional Repository (NOAA IR) JSON API provides access to the NOAA IR's metadata in JSON.
 
-```National Environmental Policy Act (NEPA) : 1
-Weather Research and Forecasting Innovation Act : 23702
+Each collection in the NOAA IR API has its own endpoint, with the collection's unique identifier, or pid, serving as the endpoint. The NOAA IR collections and associated pids consist of:
+
+```
+National Environmental Policy Act (NEPA) : 1
 Coral Reef Conservation Program (CRCP) : 3
 Ocean Exploration Program (OER) : 4
 National Marine Fisheries Service (NMFS) : 5
@@ -27,15 +29,16 @@ Office of Marine and Aviation Operations (OMAO) : 16402
 Integrated Ecosystem Assessment (IEA):22022
 NOAA Cooperative Institutes: 23649
 Cooperative Science Centers: 24914
+Weather Research and Forecasting Innovation Act : 23702
 ```
 
 **Notes**:
-* No API key or authenication is required.
-* If you query one or more collection and only are interested in the unique item count, be sure to de-duplicate your results. Items in the NOAA IR are shared across multiple collections, and this will be reflected in cases where multiple collections are combined into a single dataset.  
+* No API key or authentication is required.
+* If you query one or more collection and only are interested in the unique item count, you will need to de-duplicate your results. Items in the NOAA IR are shared across multiple collections, and this will be reflected in cases where multiple collections are combined into a single dataset.  
 
 ### API Base URL
 
-The NOAA IR JSON API's base url is:
+The NOAA IR JSON API's base URL is:
 * https://repository.library.noaa.gov/fedora/export
 
 From the base URL you have the option to download or view JSON.
@@ -91,6 +94,7 @@ Once you retrieved the number of rows, you can pass them off as parameters and p
 '''https://response.library.noaa.gov/fedora/export/view/collection/4?rows=718'
 >>> json_d = response.json()
 >>> docs = json_d['response']['docs']
+>>>
 ```
 
 In parsing collection data be sure your code is written to handle blank fields.
@@ -132,12 +136,13 @@ In using this feature, the date must be formatted as 'YYYY-MM-DDTHH:MM:SSZ'. Oth
 >>> response.url
 'https://repository.library.noaa.gov/fedora/export/download/collection/4?from=2020-06-01T00:00:00Z&until2020-07-15T00:00:00Z
 >>> json_d = response.json()
->>> docs = response['response']['docs']   
+>>> docs = response['response']['docs']
+>>>  
 ```
 
 ##### Example 3: parsing with pandas
 
-The structure of NOAA JSON API records allow you to parse them using Python's popular data analysis library, [pandas](https://pandas.pydata.org/).
+NOAA JSON API records can be easily parsed using Python's popular data analysis library, [pandas](https://pandas.pydata.org/).
 
 Similar to other examples, begin by importing a collection and then selecting the collection's items.
 
@@ -148,9 +153,10 @@ Similar to other examples, begin by importing a collection and then selecting th
 >>> response = requests.get(url)
 >>> json_d = response.json()
 >>> docs = json_d['response']['docs']
+>>>
 ```
 
-Once the items's collection data is loaded you can load into Pandas' DataFrame from object with a single command/
+Once NOAA IR collection data is downloaded, you can load it into a pandas' DataFrame object with a single command/
 
 ```
 >>> df = pd.DataFrame(docs)
@@ -159,7 +165,7 @@ Once the items's collection data is loaded you can load into Pandas' DataFrame f
 >>>
 ```
 
-When parsing the NOAA IR JSON API with pandas there are side effects to be aware of, most notably how values in some fields or columns are imported into a DataFrame as a Python list objects.
+When parsing the NOAA IR JSON API with pandas there are side effects to be aware of, most notably how values in some fields or columns are imported into a DataFrame as a Python list object.
 
 ##### More examples
 
