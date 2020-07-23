@@ -39,7 +39,7 @@ Weather Research and Forecasting Innovation Act : 23702
 ### API Base URL
 
 The NOAA IR JSON API's base URL is:
-* https://repository.library.noaa.gov/fedora/export
+* https://repository.library.noaa.gov/fedora/export/
 
 From the base URL you have the option to download or view JSON.
 
@@ -80,7 +80,7 @@ In this example, import Python's [requests](https://requests.readthedocs.io/en/m
 ```
 >>> import requests
 >>>
->>> url = https://repository.library.noaa.gov/fedora/export/view/collection/4
+>>> url = 'https://repository.library.noaa.gov/fedora/export/view/collection/4'
 >>> response = requests.get(url)
 >>> json_d = response.json()
 >>> rows = json_d['response']['numFound']
@@ -128,13 +128,13 @@ In using this feature, the date must be formatted as 'YYYY-MM-DDTHH:MM:SSZ'. Oth
 >>> from datetime import datetime
 >>> import requests
 >>>
->>> url = "https://repository.library.noaa.gov/fedora/export/download/collection/4"
+>>> url = 'https://repository.library.noaa.gov/fedora/export/download/collection/4'
 >>> from_d = '2020-06-01T00:00:00Z'
 >>> until_d = datetime.now().strftime('%Y-%m-%dT00:00:00Z')
 >>>
 >>> response = requests.get(url, params={'from': from, 'until': until_d})
 >>> response.url
-'https://repository.library.noaa.gov/fedora/export/download/collection/4?from=2020-06-01T00:00:00Z&until2020-07-15T00:00:00Z
+'https://repository.library.noaa.gov/fedora/export/download/collection/4?from=2020-06-01T00:00:00Z&until2020-07-15T00:00:00Z'
 >>> json_d = response.json()
 >>> docs = response['response']['docs']
 >>>  
@@ -156,7 +156,7 @@ Similar to other examples, begin by importing a collection and then selecting th
 >>>
 ```
 
-Once NOAA IR collection data is downloaded, you can load it into a pandas' DataFrame object with a single command/
+Once NOAA IR collection data is downloaded, you can load it into a pandas' DataFrame object with a single command.
 
 ```
 >>> df = pd.DataFrame(docs)
