@@ -6,6 +6,13 @@
 
 The NOAA Institutional Repository provides two public web services for users.
 
+With these web services you can programmatically access information about the NOAA IR's holdings, including:
+* NOAA funded/authored Journal Articles
+* NOAA Publications (Technical Memorandum and Reports)
+* Biological Opinions
+
+More information about the NOAA IR can be found at the Central Library's IR FAQs [page](https://library.noaa.gov/Research-Tools/IR/IR-FAQs).   
+
 ### NOAA IR JSON API
 
 The NOAA Institutional Repository (NOAA IR) JSON API provides access to the NOAA IR's metadata in JSON.
