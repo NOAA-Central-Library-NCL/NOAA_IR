@@ -6,7 +6,7 @@
 
 The NOAA Institutional Repository provides two public web services for users.
 
-With these web services you can programmatically access information about the NOAA IR's holdings, including:
+ These web services will allow you to programmatically access information about the NOAA IR's holdings, including:
 * NOAA funded/authored Journal Articles
 * NOAA Publications (Technical Memorandum and Reports)
 * Biological Opinions
@@ -52,14 +52,14 @@ From the base URL you have the option to download or view JSON.
 
 #### Download URL
 
-* https://repository.library.noaa.gov/fedora/export/download/collection/{pid}
+* https://repository.library.noaa.gov/fedora/export/download/collection/noaa:{pid}
 
 
 By choosing this option you download all items in JSON from a collection, including directly from the browser.
 
 #### View URL
 
-* https://repository.library.noaa.gov/fedora/export/view/collection/{pid}
+* https://repository.library.noaa.gov/fedora/export/view/collection/noaa:{pid}
 
 By choosing this option you retrieve items in JSON from a collection, with the default number of items returning only 100. If you want additional items to be return you need to pass the "rows" parameter with the number of items specified. Item count for each collection can be viewed in each collection's responseHeader tag:
 
@@ -87,7 +87,7 @@ In this example, import Python's [requests](https://requests.readthedocs.io/en/m
 ```
 >>> import requests
 >>>
->>> url = 'https://repository.library.noaa.gov/fedora/export/view/collection/4'
+>>> url = 'https://repository.library.noaa.gov/fedora/export/view/collection/noaa:4'
 >>> response = requests.get(url)
 >>> json_d = response.json()
 >>> rows = json_d['response']['numFound']
@@ -98,7 +98,7 @@ Once you retrieved the number of rows, you can pass them off as parameters and p
 ```
 >>> response = requests.get(url, params={'rows':rows})
 >>> response.url
-'''https://response.library.noaa.gov/fedora/export/view/collection/4?rows=718'
+'''https://response.library.noaa.gov/fedora/export/view/collection/noaa:4?rows=718'
 >>> json_d = response.json()
 >>> docs = json_d['response']['docs']
 >>>
@@ -135,13 +135,13 @@ In using this feature, the date must be formatted as 'YYYY-MM-DDTHH:MM:SSZ'. Oth
 >>> from datetime import datetime
 >>> import requests
 >>>
->>> url = 'https://repository.library.noaa.gov/fedora/export/download/collection/4'
+>>> url = 'https://repository.library.noaa.gov/fedora/export/download/collection/noaa:4'
 >>> from_d = '2020-06-01T00:00:00Z'
 >>> until_d = datetime.now().strftime('%Y-%m-%dT00:00:00Z')
 >>>
 >>> response = requests.get(url, params={'from': from, 'until': until_d})
 >>> response.url
-'https://repository.library.noaa.gov/fedora/export/download/collection/4?from=2020-06-01T00:00:00Z&until2020-07-15T00:00:00Z'
+'https://repository.library.noaa.gov/fedora/export/download/collection/noaa:4?from=2020-06-01T00:00:00Z&until2020-07-15T00:00:00Z'
 >>> json_d = response.json()
 >>> docs = response['response']['docs']
 >>>  
@@ -156,7 +156,7 @@ Similar to other examples, begin by importing a collection and then selecting th
 ```
 >>> import requests
 >>> import pandas as pd
->>> url = "https://repository.library.noaa.gov/fedora/export/download/collection/4"
+>>> url = "https://repository.library.noaa.gov/fedora/export/download/collection/noaa:4"
 >>> response = requests.get(url)
 >>> json_d = response.json()
 >>> docs = json_d['response']['docs']
