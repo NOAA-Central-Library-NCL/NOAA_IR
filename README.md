@@ -17,7 +17,9 @@ More information about the NOAA IR can be found at the Central Library's IR FAQs
 
 The NOAA Institutional Repository (NOAA IR) JSON API provides access to the NOAA IR's metadata in JSON.
 
-Each collection in the NOAA IR API has its own endpoint, with the collection's unique identifier, or pid, serving as the endpoint. The NOAA IR collections and associated pids consist of:
+#### IR Collection endpoints
+
+Each collection in the NOAA IR API has its own endpoint, with the collection's unique identifier, or PID, serving as the endpoint. The NOAA IR collections and corresponding PIDs consist of:
 
 ```
 National Environmental Policy Act (NEPA) : 1
@@ -39,8 +41,15 @@ Cooperative Science Centers: 24914
 Weather Research and Forecasting Innovation Act : 23702
 ```
 
+#### IR Collection Endpoint
+
+It is also possible to download the entire collection as a JSON file by entering the following URL in your browser:
+
+* https://repository.library.noaa.gov/fedora/export/download/collection/noaa
+
+
 **Notes**:
-* No API key or authentication is required.
+* No API key or authentication required.
 * If you query one or more collection and only are interested in the unique item count, you will need to de-duplicate your results. Items in the NOAA IR are shared across multiple collections, and this will be reflected in cases where multiple collections are combined into a single dataset.  
 
 ### API Base URL
