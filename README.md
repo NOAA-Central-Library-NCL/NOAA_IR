@@ -191,4 +191,38 @@ More detailed examples can be found in this repository's ```noaa_json_api``` dir
 
 The NOAA Institutional Repository also provides access to the IR's collection through [OAI-PMH](http://www.openarchives.org/OAI/openarchivesprotocol.html).
 
-More information and examples for OAI-PMH are coming soon.
+Available OAI Verbs in the NOAA IR:
+* Identify
+* ListMetadataFormats (the NOAA IR's OMI-PMH currently only provides Dublin Core)
+* GetRecord
+* ListIdentifiers
+* ListRecords
+
+For a more detailed examples view, the NOAA IR's help page describing [OAI-PMH](https://repository.library.noaa.gov/help#quick-link-oaipmh-summary)
+
+##### Identify
+
+Use the Identify verb view metadata about the repository's OAI-PMH service.
+
+Identify URL: [https://repository.library.noaa.gov/fedora/oai?verb=Identify](https://repository.library.noaa.gov/fedora/oai?verb=Identify)
+
+#### GetRecord
+
+Use the GetRecord verb to retrieve metadata for individual object.
+
+GetRecord URL: https://repository.library.noaa.gov/fedora/oai?verb=GetRecord&metadataPrefix=oai_dc&identifier=oai:<value>
+
+Example: [https://repository.library.noaa.gov/fedora/oai?verb=GetRecord&metadataPrefix=oai_dc&identifier=oai:noaa.stacks:noaa:436](https://repository.library.noaa.gov/fedora/oai?verb=GetRecord&metadataPrefix=oai_dc&identifier=oai:noaa.stacks:noaa:436)
+
+#### ListRecords
+
+Use the ListRecords verb to retrieve records.
+
+ListRecords URL: [https://repository.library.noaa.gov/fedora/oai?verb=ListRecords&metadataPrefix=oai_dc](https://repository.library.noaa.gov/fedora/oai?verb=ListRecords&metadataPrefix=oai_dc)
+
+##### resumptionToken
+
+If an OAI request is too large to be retrieved in a single request, you will have to use the resumptionToken located after the final record of your request. The resumptionToken URL
+is similarly constructed to the ListRecords URL convention.
+
+resumptionToken URL: https://repository.library.noaa.gov/fedora/oai?verb=ListRecords&resumptionToken=<value>
