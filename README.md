@@ -4,7 +4,7 @@
 
 ## NOAA Institutional Repository web services
 
-The NOAA Institutional Repository provides two public web services for users.
+The [NOAA Institutional Repository](https://repository.library.noaa.gov/) provides two public web services for users.
 
  These web services will allow you to programmatically access information about the NOAA IR's holdings, including:
 * NOAA funded/authored Journal Articles
