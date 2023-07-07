@@ -51,7 +51,7 @@ It is also possible to download the entire collection as a JSON file by entering
 
 **Notes**:
 * No API key or authentication required.
-* If you query one or more collection and only are interested in the unique item count, you will need to de-duplicate your results. Items in the NOAA IR are shared across multiple collections, and this will be reflected in cases where multiple collections are combined into a single dataset.  
+* If you query one or more collection and only are interested in the unique item count, you will need to de-duplicate your results. Items in the NOAA IR are shared across multiple collections, and this will be reflected in cases where multiple collections are combined into a single dataset. Therefore if you are interested in pulling the inter collection, simply use the IR Collection Endpoint.
 
 ### API Base URL
 
