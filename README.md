@@ -46,18 +46,9 @@ Deepwater Horizon Oil Spill and Restoration (DWH)": "noaa:44280
 
 It is also possible to download the entire IR collection as a JSON file by entering the following URL in your browser:
 
-* https://repository.library.noaa.gov/fedora/export/download/collection/noaa
+* https://repository.library.noaa.gov/fedora/export/download
 
 It is also possible to download the the entire IR collection as as either a XML or CSV file by entering the following URLs in your browser: 
-
-For an XML file: 
-
-* https://repository.library.noaa.gov/fedora/export/download/xml
-
-For a CSV file: 
-
-* https://repository.library.noaa.gov/fedora/export/download/csv
-
 
 **Notes**:
 * No API key or authentication required.
